@@ -1,0 +1,43 @@
+<div class="Container" style="margin-top: 70px;">
+    <div class="row">
+        <div class="col-sm-12">
+            <div *ngFor = "let league of leagues_list | async">
+                <div class="card text-white bg-primary mb-3"
+                     style="cursor: pointer; width: 30rem; margin: auto;"
+                     [routerLink] = "['/leaguesCollection', league._id]">
+                    
+                    <div class="card-header">
+                        {{league.title}}
+                    </div>
+                    <div class="card-body">
+                        <ng-container *ngIf="league.teams && Object.keys(league.teams).length > 0">
+                            Team in league:
+                            <!-- Displaying only the name of the first team -->
+                            {{ Object.keys(league.teams)[0] }}
+                        </ng-container>
+                    </div>
+                    <div class="card-footer" *ngIf="league.reviews">
+                        {{league.reviews.length}}
+                        reviews available
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <button class="btn btn-primary"
+                    (click) = "previousPage()">
+                Previous
+            </button>
+        </div>
+
+        <div class="col-sm-6 text-end">
+            <button class="btn btn-primary"
+                    (click) = "nextPage()">
+                Next
+            </button>
+        </div>
+    </div>
+</div>
