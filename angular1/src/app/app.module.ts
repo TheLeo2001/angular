@@ -13,6 +13,7 @@ import { OneLeagueComponent } from './oneleague.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from '@auth0/auth0-angular';
 import { NavComponent } from './nav.component';
+import { FormsModule } from '@angular/forms';  // ###### search function attempt #####
 
 var routes: any = [
   {
@@ -37,6 +38,7 @@ var routes: any = [
     NavComponent
   ],
   imports: [
+    FormsModule, // ######################### search funtion attempt ###########
     BrowserModule,
     AppRoutingModule, HttpClientModule, 
     RouterModule.forRoot(routes), ReactiveFormsModule, 

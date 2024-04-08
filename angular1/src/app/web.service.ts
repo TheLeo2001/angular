@@ -39,4 +39,11 @@ export class WebService{
         return this.http.delete(`http://localhost:5000/api/v1.0/leaguesCollection/${leagueID}/reviews/${reviewID}`);
     }
 
+
+// ################################################################ search attempt
+    // New method for searching leagues
+  searchLeagues(query: string) {
+    return this.http.get('http://localhost:5000/api/v1.0/leaguesCollection/search?query=' + query);
+  }
+
 }
