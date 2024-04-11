@@ -41,9 +41,13 @@ export class WebService{
 
 
 // ################################################################ search attempt
-    // New method for searching leagues
+    // method for searching leagues
   searchLeagues(query: string) {
     return this.http.get('http://localhost:5000/api/v1.0/leaguesCollection/search?query=' + query);
+  }
+
+  searchTeams(query: string) {
+    return this.http.get('http://localhost:5000/api/v1.0/leaguesCollection/searchTeams?query=' + query);
   }
 
 }

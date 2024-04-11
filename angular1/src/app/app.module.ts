@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from '@auth0/auth0-angular';
 import { NavComponent } from './nav.component';
 import { FormsModule } from '@angular/forms';  // ###### search function attempt #####
+import { TeamsComponent } from './teams.component';
 
 var routes: any = [
   {
@@ -35,7 +36,7 @@ var routes: any = [
 @NgModule({
   declarations: [
     AppComponent, LeaguesComponent, HomeComponent, OneLeagueComponent,
-    NavComponent
+    NavComponent, TeamsComponent
   ],
   imports: [
     FormsModule, // ######################### search funtion attempt ###########
