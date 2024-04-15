@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
 
 @Injectable()
 export class WebService{
@@ -8,6 +10,10 @@ export class WebService{
     public reviewID: any;
 
     constructor(private http: HttpClient) { }
+
+    get(url: string): Observable<any> {
+        return this.http.get(url);
+      }
     
     getLeagues(page: number) {
         return this.http.get('http://localhost:5000/api/v1.0/leaguesCollection?pn=' + page);

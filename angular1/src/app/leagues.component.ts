@@ -11,10 +11,13 @@ export class LeaguesComponent {
     Object = Object;
 
     leagues_list: any = [];
-    filteredLeagues: any = [];
+    //filteredLeagues: any = [];
     page: number = 1;
     searchTerm: string = ''; // New property for holding the search term
 
+    leagues: any[] = [];
+    filteredLeagues: any[] = [];
+    
     constructor(public webService: WebService) { }
 
     ngOnInit() {
@@ -27,7 +30,7 @@ export class LeaguesComponent {
     loadLeagues() {
         this.webService.getLeagues(this.page).subscribe(data => {
             this.leagues_list = data;
-            this.filteredLeagues = data; // Initialize filteredLeagues with all leagues
+            this.filteredLeagues = data as any[]; // Initialize filteredLeagues with all leagues
         });
     }
 
@@ -55,4 +58,19 @@ export class LeaguesComponent {
             this.filteredLeagues = this.leagues_list; // If search term is empty, display all leagues
         }
     }
+
+
+    filterLeaguesWithGoodReviews(): void {
+        this.webService.get('http://localhost:5000/api/v1.0/leaguesCollection/goodreviews').subscribe(
+            (data: any) => {
+                this.filteredLeagues = data.highly_rated_reviews; // Assuming the received data contains complete league objects
+                console.log(this.filteredLeagues); // Log the filteredLeagues array to inspect its contents
+            },
+            (error: any) => {
+                console.error('Error fetching highly rated reviews:', error);
+            }
+        );
+    }
+
+    
 }

@@ -1,11 +1,11 @@
 <div class="container">
     <div class="row">
       <div class="col">
-        <h1>Search for a Football Team</h1>
-        <div class="form-group">
+        <h1 class="mb-4">Search for a Football Team</h1>
+        <div class="input-group mb-3">
           <input type="text" class="form-control" [(ngModel)]="query" placeholder="Enter team name...">
+          <button class="btn btn-primary" type="button" (click)="searchTeams()">Search</button>
         </div>
-        <button class="btn btn-primary" (click)="searchTeams()">Search</button>
       </div>
     </div>
     <div class="row mt-3" *ngIf="teams.length > 0">
@@ -15,29 +15,29 @@
           <thead>
             <tr>
               <th>Team</th>
-              <th>Games Played</th>
-              <th>Won</th>
-              <th>Drawn</th>
-              <th>Lost</th>
-              <th>GF</th>
+              <th>W</th>
+              <th>D</th>
+              <th>L</th>
               <th>GA</th>
               <th>GD</th>
+              <th>GF</th>
+              <th>GP</th>
               <th>PPG</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let team of teams">
-              <td>{{ getKey(team) }}</td> <!-- Get the key (team name) of the current object -->
-              <td>{{ team[getKey(team)].GP }}</td> <!-- Access 'W' property of nested team object -->
-              <td>{{ team[getKey(team)].W }}</td> <!-- Access 'D' property of nested team object -->
-              <td>{{ team[getKey(team)].D }}</td> <!-- Access 'L' property of nested team object -->
-              <td>{{ team[getKey(team)].L }}</td> <!-- Access 'GA' property of nested team object -->
-              <td>{{ team[getKey(team)].GF }}</td> <!-- Access 'GD' property of nested team object -->
-              <td>{{ team[getKey(team)].GA }}</td> <!-- Access 'GF' property of nested team object -->
-              <td>{{ team[getKey(team)].GD }}</td> <!-- Access 'GP' property of nested team object -->
-              <td>{{ team[getKey(team)].PPG }}</td> <!-- Access 'PPG' property of nested team object -->
+              <td>{{ getKey(team) }}</td>
+              <td>{{ team[getKey(team)].W }}</td>
+              <td>{{ team[getKey(team)].D }}</td>
+              <td>{{ team[getKey(team)].L }}</td>
+              <td>{{ team[getKey(team)].GA }}</td>
+              <td>{{ team[getKey(team)].GD }}</td>
+              <td>{{ team[getKey(team)].GF }}</td>
+              <td>{{ team[getKey(team)].GP }}</td>
+              <td>{{ team[getKey(team)].PPG }}</td>
             </tr>
-          </tbody> 
+          </tbody>
         </table>
       </div>
     </div>

@@ -2,32 +2,71 @@
     
     <!-- Search input field -->
     <div class="row mb-3">
-        <div class="col-sm-12">
+        <div class="col-sm-6 offset-sm-3">
             <input type="text" [(ngModel)]="searchTerm" (input)="search()" placeholder="Search for a league" class="form-control">
+        </div>
+        <div class="col-sm-3 text-end">
+            <button class="btn btn-primary" (click)="filterLeaguesWithGoodReviews()">show 5 star Reviews  </button>
         </div>
     </div>
     
     <!-- Displaying leagues -->
     <div class="row">
         <div class="col-sm-12">
-            <div *ngFor="let league of filteredLeagues">
-                <div class="card text-white bg-primary mb-3"
-                     style="cursor: pointer; width: 30rem; margin: auto;"
-                     [routerLink]="['/leaguesCollection', league._id]">
-                    
-                    <div class="card-header">
-                        {{league.title}}
-                    </div>
-                    <div class="card-body">
-                        <ng-container *ngIf="league.teams && Object.keys(league.teams).length > 0">
+
+
+            <div *ngIf="filteredLeagues.length > 0 || !filteredLeagues.length">
+                <div *ngFor="let league of (filteredLeagues.length > 0 ? filteredLeagues : leagues)">
+                    <div class="card text-white bg-primary mb-3"
+                        style="cursor: pointer; width: 30rem; margin: auto;"
+                        [routerLink]="['/leaguesCollection', league._id]">
+                        
+                        <div class="card-header">
+                            {{ league.league_title || league.title }} <!-- Display league title -->
+                        </div>
+                        <!-- Display team information -->
+                        <div class="card-body" *ngIf="league.teams && Object.keys(league.teams).length > 0">
                             Team in league:
                             <!-- Displaying only the name of the first team -->
                             {{ Object.keys(league.teams)[0] }}
-                        </ng-container>
+                        </div>
+                        <!-- Display review information -->
+                        <div class="card-body" *ngIf="league.review">
+                            <strong>Review:</strong> {{ league.review.comment }}
+                            <br>
+                            <strong>Rating:</strong> {{ league.review.stars }}
+                            <br>
+                            <strong>Username:</strong> {{ league.review.username }}
+                        </div>
+                        <div class="card-footer" *ngIf="league.reviews">
+                            {{league.reviews.length}}
+                            reviews available
+                        </div>
                     </div>
-                    <div class="card-footer" *ngIf="league.reviews">
-                        {{league.reviews.length}}
-                        reviews available
+                </div>
+            </div>
+            
+            
+            <div *ngIf="filteredLeagues.length === 0">
+                <div *ngFor="let league of leagues">
+                    <div class="card text-white bg-primary mb-3"
+                        style="cursor: pointer; width: 30rem; margin: auto;"
+                        [routerLink]="['/leaguesCollection', league._id]">
+                        
+                        <div class="card-header">
+                            {{league.title}}
+                        </div>
+                        <div class="card-body">
+                            <ng-container *ngIf="league.teams && Object.keys(league.teams).length > 0">
+                                Team in league:
+                                <!-- Displaying only the name of the first team -->
+                                {{ Object.keys(league.teams)[0] }}
+                            </ng-container>
+                        </div>
+                        <div class="card-footer" *ngIf="league.reviews">
+                            {{league.reviews.length}}
+                            reviews available
+                        </div>
                     </div>
                 </div>
             </div>
