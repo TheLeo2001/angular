@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -55,5 +55,10 @@ export class WebService{
   searchTeams(query: string) {
     return this.http.get('http://localhost:5000/api/v1.0/leaguesCollection/searchTeams?query=' + query);
   }
+
+  searchTeamsByStats(wins: string) {
+    return this.http.get(`http://localhost:5000/api/v1.0/leaguesCollection/searchTeamsByStats?wins=${wins}`);
+  }
+  
 
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { WebService } from './web.service';
+import { Observer } from 'rxjs';
 
 @Component({
   selector: 'app-teams',
@@ -9,6 +10,9 @@ import { WebService } from './web.service';
 export class TeamsComponent {
   query: string = '';
   teams: any[] = [];
+  statQuery: string = ''; // For searching teams by stats
+  teamsByStats: any[] = []; // Adding teamsByStats property
+  //teamsByName: any[] = [];
 
   constructor(public webService: WebService) { }
 
@@ -21,6 +25,33 @@ export class TeamsComponent {
       });
     }
   }
+
+
+
+
+searchTeamsByStats() {
+  console.log('Searching teams by stats:', this.statQuery);
+  if (this.statQuery.trim() !== '') {
+    this.webService.searchTeamsByStats(this.statQuery).subscribe({
+      next: (data: any[]) => {
+        console.log('Search results:', data);
+        this.teamsByStats = data.map(item => {
+          return {
+            team: item.k,
+            stats: item.v
+          };
+        });
+        console.log(this.teamsByStats); // Log the teamsByStats array
+      },
+      error: (error: any) => {
+        console.error('Error:', error);
+        // Handle errors if any
+      }
+    } as Observer<any>);
+  }
+}
+
+  
 
   getKey(obj: any): string {
     // Get the key (team name) of the first property of the object
