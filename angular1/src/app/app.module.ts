@@ -16,6 +16,12 @@ import { NavComponent } from './nav.component';
 import { FormsModule } from '@angular/forms';  // ###### search function attempt #####
 import { TeamsComponent } from './teams.component';
 
+import 'chart.js/dist/Chart.js';
+
+
+
+
+
 var routes: any = [
   {
     path: '',

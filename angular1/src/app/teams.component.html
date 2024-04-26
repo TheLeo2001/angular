@@ -1,28 +1,36 @@
-<div class="container">
+<div class="container" style="padding-top: 50px;">
   <div class="row">
     <div class="col">
-      <h1 class="mb-4">Search for a Football Team</h1>
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" [(ngModel)]="query" placeholder="Enter team name...">
-        <button class="btn btn-primary" type="button" (click)="searchTeams()">Search by Name</button>
-      </div>
-    </div>
+      <br>
+      <h2 class="mb-4">Search for a Football Team by Name</h2>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" [(ngModel)]="query" placeholder="Enter team name...">
+    <button class="btn btn-pastel-red" type="button" (click)="searchTeams()">Search by Name</button>
   </div>
 
   <div class="row mt-3">
     <div class="col">
-      <h2>Search by Stats</h2>
+      <h2>Search for a Team by Wins</h2>
       <div class="input-group mb-3">
         <input type="text" class="form-control" [(ngModel)]="statQuery" placeholder="Enter stat value...">
-        <button class="btn btn-primary" type="button" (click)="searchTeamsByStats()">Search by Stats</button>
+        <button class="btn btn-pastel-red" type="button" (click)="searchTeamsByStats()">Search by Stats</button>
       </div>
     </div>
   </div>
 
-  <!-- Display search results for team name -->
-  <div class="row mt-3" *ngIf="teams.length > 0">
+  <!-- Button to find the best team -->
+  <div class="row mt-3">
+    <p>More than one team? Predict which team would win if they played eachother!</p>
     <div class="col">
-      <h2>Search Results by Name</h2>
+      <button class="btn btn-pastel-red" type="button" (click)="findBestTeam()">Find Best Team</button>
+    </div>
+  </div>
+</div>
+
+  <!-- Display the best team -->
+  <div class="row mt-3" *ngIf="bestTeam">
+    <div class="col">
+      <h2>Best Team</h2>
       <table class="table">
         <thead>
           <tr>
@@ -38,6 +46,43 @@
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <td>{{ bestTeam.team }}</td>
+            <td>{{ bestTeam.stats.W }}</td>
+            <td>{{ bestTeam.stats.D }}</td>
+            <td>{{ bestTeam.stats.L }}</td>
+            <td>{{ bestTeam.stats.GA }}</td>
+            <td>{{ bestTeam.stats.GD }}</td>
+            <td>{{ bestTeam.stats.GF }}</td>
+            <td>{{ bestTeam.stats.GP }}</td>
+            <td>{{ bestTeam.stats.PPG }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Display search results for team name -->
+  <div class="row mt-3" *ngIf="teams.length > 0">
+    <div class="col">
+      <h2>Search Results by Name</h2>
+      <table class="table">
+        <!-- Table headers -->
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>W</th>
+            <th>D</th>
+            <th>L</th>
+            <th>GA</th>
+            <th>GD</th>
+            <th>GF</th>
+            <th>GP</th>
+            <th>PPG</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Table rows -->
           <tr *ngFor="let team of teams">
             <td>{{ getKey(team) }}</td>
             <td>{{ team[getKey(team)].W }}</td>
@@ -54,11 +99,15 @@
     </div>
   </div>
 
+    <!-- Add canvas for the chart -->
+    
+
   <!-- Display search results for team stats -->
   <div class="row mt-3" *ngIf="teamsByStats.length > 0">
     <div class="col">
       <h2>Search Results by Stats</h2>
       <table class="table">
+        <!-- Table headers -->
         <thead>
           <tr>
             <th>Team</th>
@@ -73,6 +122,7 @@
           </tr>
         </thead>
         <tbody>
+          <!-- Table rows -->
           <tr *ngFor="let team of teamsByStats">
             <td>{{ team.team }}</td>
             <td>{{ team.stats.W }}</td>
@@ -88,4 +138,11 @@
       </table>
     </div>
   </div>
+
+  <div class="col">
+    <h2>Team Statistics</h2>
+    <canvas #canvas></canvas>
+  </div>
+</div>
+
 </div>

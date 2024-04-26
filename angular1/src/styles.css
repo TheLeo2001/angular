@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+.navbar {
+    background-color: #f04069; /* Pastel Red */
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.navbar-light .navbar-brand,
+.navbar-light .navbar-nav .nav-link {
+    color: #fff; /* White text */
+}
+
+.navbar-light .navbar-nav .nav-link.btn-pastel-red {
+    color: #fff; /* White text */
+    background-color: #e96382; /* Pastel Red */
+    border-color: #ffd1dc; /* Pastel Red */
+    margin-right: 20px; /* Add spacing between buttons */
+}
+
+.navbar-light .navbar-nav .nav-link.btn-pastel-red:hover {
+    color: #fff; /* White text on hover */
+    background-color: #ffb6c1; /* Lighter shade of Pastel Red on hover */
+    border-color: #ffb6c1; /* Lighter shade of Pastel Red on hover */
+}
+
+.btn-outline-pastel-red {
+    color: #ffd1dc; /* Pastel Red */
+    border-color: #ffd1dc; /* Pastel Red */
+}
+
+.btn-outline-pastel-red:hover {
+    color: #fff; /* White text on hover */
+    background-color: #ffd1dc; /* Pastel Red background on hover */
+    border-color: #ffd1dc; /* Pastel Red border on hover */
+}

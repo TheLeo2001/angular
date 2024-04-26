@@ -37,6 +37,16 @@ export class WebService{
         return this.http.post('http://localhost:5000/api/v1.0/leaguesCollection/' + this.leagueID + '/reviews', postData);
     }
 
+    editReview(leagueID: any, reviewID: any, review: any) {
+      const putData = new FormData();
+      putData.append('username', review.username);
+      putData.append('comment', review.comment);
+      putData.append('stars', review.stars);
+  
+      return this.http.put(`http://localhost:5000/api/v1.0/leaguesCollection/${leagueID}/reviews/${reviewID}`, putData);
+  }
+  
+
     
     deleteReview(leagueID: any, reviewID: any) {
         console.log('Deleting review with reviewID:', reviewID);

@@ -1,0 +1,52 @@
+/* leagues.component.css */
+
+::ng-deep body {
+    background-color: #eee0d6; /* Pale brown/beige/offwhite color */
+}
+
+.container-fluid {
+    padding-top: 70px;
+    padding-bottom: 20px;
+}
+
+.card {
+    border: none;
+    background-color: #ffd1dc; /* Pastel Red color */
+}
+
+.card-header {
+    background-color: #f04069; /* Red color */
+}
+
+.card-footer {
+    background-color: #f04069; /* Red color */
+}
+
+.card-body {
+    background-color: #d3798e; /* Pastel Red color */
+}
+
+/* Pagination buttons */
+.btn-pagination {
+    background-color: #f04069; /* Red color */
+    border-color: #f04069; /* Red color */
+    color: #fff; /* White text */
+    margin-bottom: 20px;
+}
+
+.btn-pagination:hover {
+    background-color: #ff95b0; /* Lighter shade of Red color on hover */
+    border-color: #f6e7eb; /* Lighter shade of Red color on hover */
+}
+
+/* "Show 5 star reviews" button */
+.btn-reviews {
+    background-color: #f04069; /* Red color */
+    border-color: #f04069; /* Red color */
+    color: #fff; /* White text */
+}
+
+.btn-reviews:hover {
+    background-color: #ff95b0; /* Lighter shade of Red color on hover */
+    border-color: #f6e7eb; /* Lighter shade of Red color on hover */
+}

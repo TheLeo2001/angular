@@ -1,0 +1,22 @@
+/* teams.component.css */
+
+::ng-deep body {
+    background-color: #eee0d6; /* Pale brown/beige/offwhite color */
+}
+
+.btn-pastel-red {
+    background-color: #f04069; /* Red color */
+    border-color: #f04069; /* Red color */
+    color: #fff; /* White text */
+}
+
+.btn-pastel-red:hover {
+    background-color: #ff3366; /* Lighter shade of Red color on hover */
+    border-color: #ff3366; /* Lighter shade of Red color on hover */
+}
+
+h2 {
+    color: #f04069;
+
+}
+

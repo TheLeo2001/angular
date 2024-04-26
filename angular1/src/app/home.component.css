@@ -1,0 +1,36 @@
+/* home.component.css */
+
+::ng-deep body {
+    background-color: #eee0d6; /* Pale brown/beige/offwhite color */
+}
+
+.home-container {
+    background-color: #eee0d6; /* Pale brown/beige/offwhite color */
+    padding-top: 100px;
+}
+
+h2 {
+    color: #f04069; /* Red color */
+    font-family: 'Roboto', sans-serif; /* Change the font to Roboto */
+}
+
+h5 {
+    color: #f04069; 
+    font-family: 'Roboto', sans-serif; 
+}
+
+.text-font {
+    font-family: 'Roboto', sans-serif; 
+}
+
+.image-container {
+    margin-bottom: 30px;
+}
+
+.image-container img {
+    max-width: 400px;
+}
+
+.container {
+    padding: 20px;
+}

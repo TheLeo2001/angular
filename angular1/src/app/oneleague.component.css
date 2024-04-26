@@ -1,1 +1,23 @@
 .error { background-color: rgb(239, 216, 216);}
+
+::ng-deep body {
+    background-color: #eee0d6; /* Pale brown/beige/offwhite color */
+}
+
+
+.card {
+    border: none;
+    background-color: #ffd1dc; /* Pastel Red color */
+}
+
+.card-header {
+    background-color: #f04069; /* Red color */
+}
+
+.card-footer {
+    background-color: #f04069; /* Red color */
+}
+
+.card-body {
+    background-color: #d3798e; /* Pastel Red color */
+}
